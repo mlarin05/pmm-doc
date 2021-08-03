@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://pmm-doc.netlify.app/2.x/using/backup.html">
       
       <link rel="icon" href="../_images/percona-favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
     
     
       
@@ -697,6 +697,20 @@
         <li class="md-nav__item">
   <a href="#make-a-backup" class="md-nav__link">
     Make a backup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-a-scheduled-backup" class="md-nav__link">
+    Make a scheduled backup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edit-a-scheduled-backup" class="md-nav__link">
+    Edit a scheduled backup
   </a>
   
 </li>
@@ -1909,6 +1923,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../release-notes/2.20.0.html" class="md-nav__link">
+        PMM 2.20.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../release-notes/2.19.0.html" class="md-nav__link">
         PMM 2.19.0
       </a>
@@ -2307,6 +2333,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#make-a-scheduled-backup" class="md-nav__link">
+    Make a scheduled backup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edit-a-scheduled-backup" class="md-nav__link">
+    Edit a scheduled backup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#restore-a-backup" class="md-nav__link">
     Restore a backup
   </a>
@@ -2333,13 +2373,16 @@
                 <h1 id="backup-and-restore">Backup and Restore<a class="headerlink" href="#backup-and-restore" title="Permanent link">&para;</a></h1>
 <div class="admonition caution alert alert-warning">
 <p class="admonition-title">Caution</p>
-<p>Backup and restore features are a technical preview and currently only works with a MySQL database server or a MongoDB replica set cluster, backing up to an Amazon AWS S3 storage location.</p>
+<ul>
+<li>Backup and restore are <a href="../details/glossary.html#technical-preview">technical preview</a> features.</li>
+<li>Currently supported: MySQL database server or MongoDB replica set cluster, backing up to Amazon AWS S3 storage locations.</li>
+</ul>
 </div>
 <div class="admonition summary alert alert-info">
 <p class="admonition-title">Summary</p>
 <ul>
-<li>Enable backup features.</li>
-<li>Add a storage location.</li>
+<li><a href="#before-you-start">Enable backup features</a>.</li>
+<li><a href="#add-a-storage-location">Add a storage location</a>.</li>
 <li>Satisfy preconditions:<ul>
 <li>For <a href="#mysql-backup-preconditions">MySQL</a>:<ul>
 <li>Confirm instance service parameters and storage location.</li>
@@ -2353,6 +2396,7 @@
 </ul>
 </li>
 <li><a href="#make-a-backup">Make a backup</a>, or,</li>
+<li><a href="#make-a-scheduled-backup">Make</a> or <a href="#edit-a-scheduled-backup">edit</a> a scheduled backup, or,</li>
 <li><a href="#restore-a-backup">Restore a backup</a>.</li>
 </ul>
 </div>
@@ -2382,7 +2426,10 @@
 <h2 id="add-a-storage-location">Add a storage location<a class="headerlink" href="#add-a-storage-location" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Select <i class="uil uil-history"></i> → <em>Backup</em> → <em>Storage locations</em>.</p>
+<p>Select <i class="uil uil-history"></i> → <em>Backup</em>.</p>
+</li>
+<li>
+<p>Select <em>Storage locations</em>.</p>
 <p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management.jpg"><img alt="" src="../_images/PMM_Backup_Management.jpg" /></a></div></p>
 </li>
 <li>
@@ -2392,14 +2439,14 @@
 <p>Fill in the form fields.</p>
 <p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management_Locations_Add_Storage_Location.jpg"><img alt="" src="../_images/PMM_Backup_Management_Locations_Add_Storage_Location.jpg" /></a></div></p>
 <ul>
-<li><em>Name</em>:</li>
-<li><em>Description</em>:</li>
-<li><em>Type</em>: Choose the type of storage.<ul>
+<li><em>Name</em>: A short name for this location.</li>
+<li><em>Description</em>: A long description for this location.</li>
+<li><em>Type</em>: Choose the type of storage:<ul>
 <li><em>S3</em>: Use <a href="https://aws.amazon.com/s3/">Amazon AWS S3</a><ul>
-<li><em>Endpoint</em>: The S3 backup location endpoint.</li>
-<li><em>Bucket Name</em>:</li>
-<li><em>Access Key</em>:</li>
-<li><em>Secret Key</em>:</li>
+<li><em>Endpoint</em>: The S3 backup location endpoint (URL).</li>
+<li><em>Bucket Name</em>: The bucket name.</li>
+<li><em>Access Key</em>: The access key string.</li>
+<li><em>Secret Key</em>: The secret key string. (Click <i class="uil uil-eye"></i> to reveal and <i class="uil uil-eye-slash"></i> to hide again.)</li>
 </ul>
 </li>
 <li><em>Local Client:</em> (Not currently implemented)</li>
@@ -2409,7 +2456,10 @@
 </ul>
 </li>
 <li>
-<p>Click <em>Add</em> to add the location or <em>Test</em> to test the connection.</p>
+<p>(Optional) Click <em>Test</em> to test the connection.</p>
+</li>
+<li>
+<p>Click <em>Add</em> to add the location.</p>
 </li>
 </ol>
 <h2 id="mysql-backup-preconditions">MySQL backup preconditions<a class="headerlink" href="#mysql-backup-preconditions" title="Permanent link">&para;</a></h2>
@@ -2477,21 +2527,28 @@
 </li>
 </ul>
 <h2 id="make-a-backup">Make a backup<a class="headerlink" href="#make-a-backup" title="Permanent link">&para;</a></h2>
+<p>Make a single on-demand backup.</p>
 <ol>
 <li>
-<p>Select <i class="uil uil-history"></i> → <em>Backup</em> → <em>Backup Inventory</em>.</p>
+<p><a href="#add-a-storage-location">Add a storage location</a>.</p>
+</li>
+<li>
+<p>Select <i class="uil uil-history"></i> → <em>Backup</em>.</p>
+</li>
+<li>
+<p>Select <em>Backup Inventory</em>.</p>
 </li>
 <li>
 <p>Click <i class="uil uil-plus-square"></i> <em>Add</em>.</p>
 </li>
 <li>
-<p>In the <em>Backup On Demand</em> dialog, enter values for:</p>
+<p>In the <em>Backup on demand</em> dialog, enter values for:</p>
 <ul>
 <li><em>Service name</em>: Choose from the menu the service to back up.</li>
 <li><em>Vendor</em>: A value is automatically selected based on the service type.</li>
 <li><em>Backup name</em>: Enter a unique name for this backup.</li>
-<li><em>Description</em>: Enter a long description for this backup.</li>
-<li><em>Location</em>: Choose from the menu the <a href="#add-a-storage-location">storage location</a>.</li>
+<li><em>Description</em>: (Optional) Enter a long description for this backup.</li>
+<li><em>Location</em>: Choose from the menu the storage location.</li>
 </ul>
 </li>
 <li>
@@ -2499,6 +2556,94 @@
 </li>
 <li>
 <p>In the <em>Backup Inventory</em> pane, watch the <em>Status</em> column.</p>
+</li>
+</ol>
+<h2 id="make-a-scheduled-backup">Make a scheduled backup<a class="headerlink" href="#make-a-scheduled-backup" title="Permanent link">&para;</a></h2>
+<p>Make regular scheduled backups.</p>
+<ol>
+<li>
+<p><a href="#add-a-storage-location">Add a storage location</a>.</p>
+</li>
+<li>
+<p>Select <i class="uil uil-history"></i> → <em>Backup</em>.</p>
+</li>
+<li>
+<p>Select <em>Scheduled Backups</em>.</p>
+</li>
+<li>
+<p>Click <i class="uil uil-plus-square"></i> <em>Add</em>.</p>
+</li>
+<li>
+<p>In the <em>Schedule backup</em> dialog, enter values for:</p>
+<ul>
+<li><em>Service name</em>: Choose from the menu the service to back up.</li>
+<li><em>Backup name</em> : Enter a unique name for this scheduled backup.</li>
+<li><em>Vendor</em>: A value is automatically selected based on the service type.</li>
+<li><em>Location</em>: Choose from the menu the storage location.</li>
+<li><em>Data model</em>: Select one of the options:<ul>
+<li><em>Physical</em>: Backup the physical data model.</li>
+<li><em>Logical</em>: (Not currently implemented)</li>
+</ul>
+</li>
+<li><em>Description</em>: (Optional) Enter a long description for this scheduled backup.</li>
+<li>
+<p><em>Schedule</em>: The schedule for the backup.</p>
+<ul>
+<li><em>Every</em>: The backup interval. Choose from the menu one of:<ul>
+<li><em>Year</em></li>
+<li><em>Month</em></li>
+<li><em>Week</em></li>
+<li><em>Day</em></li>
+<li><em>Hour</em></li>
+<li><em>Minute</em></li>
+</ul>
+</li>
+<li>Depending on the interval chosen, the remaining options will be active or inactive.<ul>
+<li><em>Month</em>: Select one or more months.</li>
+<li><em>Day</em>: Select one or more day numbers.</li>
+<li><em>Weekday</em>: Select one or more week day names.</li>
+<li><em>Start time, h/m</em>: The hour and minute for the backup.<ul>
+<li>In the first field, select one or more hours (<em>00</em> to <em>23</em>, <em>00</em> is midnight).</li>
+<li>In the second field, select one or more minutes (<em>00</em> to <em>59</em>).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><em>Enable</em>: Deselect to define the scheduled backup without enabling it.</li>
+</ul>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management_Schedule.png"><img alt="" src="../_images/PMM_Backup_Management_Schedule.png" /></a></div></p>
+<div class="admonition note">
+<p>For this release (2.20.0), times are UTC.</p>
+</div>
+</li>
+</ul>
+</li>
+<li>
+<p>Click <em>Schedule</em>.</p>
+</li>
+<li>
+<p>A new entry will appear in the list.</p>
+</li>
+</ol>
+<h2 id="edit-a-scheduled-backup">Edit a scheduled backup<a class="headerlink" href="#edit-a-scheduled-backup" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Select <i class="uil uil-history"></i> → <em>Backup</em>.</p>
+</li>
+<li>
+<p>Select <em>Scheduled Backups</em>.</p>
+</li>
+<li>
+<p>In the <em>Actions</em> column:</p>
+<ul>
+<li>Click the switch <i class="uil uil-toggle-on"></i> to enable or disable the backup.</li>
+<li>Click <i class="uil uil-pen"></i> to edit the backup schedule.</li>
+<li>Click <i class="uil uil-times"></i> to delete the backup schedule.</li>
+<li>
+<p>Click <i class="uil uil-copy"></i> to create a (by default, disabled) copy of the backup schedule.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management_Scheduled_Backups_Copy.png"><img alt="" src="../_images/PMM_Backup_Management_Scheduled_Backups_Copy.png" /></a></div></p>
+</li>
+</ul>
 </li>
 </ol>
 <h2 id="restore-a-backup">Restore a backup<a class="headerlink" href="#restore-a-backup" title="Permanent link">&para;</a></h2>
@@ -2530,7 +2675,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-07-16
+      Last update: 2021-08-03
     
   </small>
 </div>
@@ -2609,10 +2754,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      <script src="../assets/javascripts/bundle.2b46852b.min.js"></script>
       
         <script src="../js/lightgallery.min.js"></script>
       

@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://pmm-doc.netlify.app/2.x/release-notes/2.16.0.html">
       
       <link rel="icon" href="../_images/percona-favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
     
     
       
@@ -1829,6 +1829,18 @@
   
   
     <li class="md-nav__item">
+      <a href="2.20.0.html" class="md-nav__link">
+        PMM 2.20.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="2.19.0.html" class="md-nav__link">
         PMM 2.19.0
       </a>
@@ -1901,6 +1913,13 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#important-note-for-users-of-pmm-2160" class="md-nav__link">
+    Important note for users of PMM 2.16.0
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#release-highlights" class="md-nav__link">
@@ -2258,6 +2277,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#important-note-for-users-of-pmm-2160" class="md-nav__link">
+    Important note for users of PMM 2.16.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#release-highlights" class="md-nav__link">
     Release Highlights
   </a>
@@ -2322,6 +2348,13 @@
 </table>
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
+<h2 id="important-note-for-users-of-pmm-2160">Important note for users of PMM 2.16.0<a class="headerlink" href="#important-note-for-users-of-pmm-2160" title="Permanent link">&para;</a></h2>
+<p>If you started using PMM from version 2.16 and have already upgraded to 2.17, 2.18, or 2.19, you might have some problems with PMM Server monitoring, Remove Monitoring, or RDS/Azure monitoring. If you experience a problem, we recommend you upgrade and replace the Docker container by following the official instructions for an upgrade here: <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html#upgrade">https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html#upgrade</a>.</p>
+<p>If you can&rsquo;t do this, then you need to perform additional steps after upgrading to 2.20.</p>
+<ol>
+<li>Enter the container: <code>docker exec -it pmm-server bash</code></li>
+<li>Roll back <code>pmm2-client</code> package to stable version: <code>yum downgrade -y pmm2-client</code></li>
+</ol>
 <h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
@@ -2420,7 +2453,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-06-25
+      Last update: 2021-08-03
     
   </small>
 </div>
@@ -2499,10 +2532,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      <script src="../assets/javascripts/bundle.2b46852b.min.js"></script>
       
         <script src="../js/lightgallery.min.js"></script>
       

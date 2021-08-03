@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://pmm-doc.netlify.app/2.x/setting-up/client/index.html">
       
       <link rel="icon" href="../../_images/percona-favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
     
     
       
@@ -1831,6 +1831,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../release-notes/2.20.0.html" class="md-nav__link">
+        PMM 2.20.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../release-notes/2.19.0.html" class="md-nav__link">
         PMM 2.19.0
       </a>
@@ -2406,10 +2418,13 @@
 <li>On Debian or Red Hat, download <code>.deb</code>/<code>.rpm</code> PMM Client packages and manually install them.</li>
 </ul>
 </li>
-<li>
-<p><a href="#binary-package">Binary package</a>: For other Linux distributions, download and unpack generic PMM Client Linux binaries.</p>
-</li>
 </ul>
+<div class="admonition hint alert">
+<p class="admonition-title">Binary is only way to install PMM client without root permissions</p>
+<ul>
+<li><a href="#binary-package">Binary package</a>: For other Linux distributions, download and unpack generic PMM Client Linux binaries. </li>
+</ul>
+</div>
 <p>When you have installed PMM Client, you must:</p>
 <ul>
 <li><a href="#register">Register the node with PMM Server</a>.</li>
@@ -2584,9 +2599,12 @@ dpkg -i percona-release_latest.generic_all.deb
 </li>
 <li>
 <p>Install the PMM Client package.</p>
+<div class="admonition hint">
+<p class="admonition-title">Root permissions</p>
 <div class="highlight"><pre><span></span><code>apt update
 apt install -y pmm2-client
 </code></pre></div>
+</div>
 </li>
 <li>
 <p>Check.</p>
@@ -2634,13 +2652,13 @@ apt install -y pmm2-client
 <p>(Alternatively, copy the link and use <code>wget</code> to download it.)</p>
 <p>Here are the download page links for each supported platform.</p>
 <ul>
-<li><a href="https://www.percona.com/downloads/pmm2/2.19.0/binary/debian/stretch/">Debian 9 (Stretch)</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.19.0/binary/debian/buster/">Debian 10 (Buster)</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.19.0/binary/redhat/7/">Red Hat/CentOS/Oracle 7</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.19.0/binary/redhat/8/">Red Hat/CentOS/Oracle 8</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.19.0/binary/debian/xenial/">Ubuntu 16.04 (Xenial Xerus)</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.19.0/binary/debian/bionic/">Ubuntu 18.04 (Bionic Beaver)</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.19.0/binary/debian/focal/">Ubuntu 20.04 (Focal Fossa)</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.20.0/binary/debian/stretch/">Debian 9 (Stretch)</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.20.0/binary/debian/buster/">Debian 10 (Buster)</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.20.0/binary/redhat/7/">Red Hat/CentOS/Oracle 7</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.20.0/binary/redhat/8/">Red Hat/CentOS/Oracle 8</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.20.0/binary/debian/xenial/">Ubuntu 16.04 (Xenial Xerus)</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.20.0/binary/debian/bionic/">Ubuntu 18.04 (Bionic Beaver)</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.20.0/binary/debian/focal/">Ubuntu 20.04 (Focal Fossa)</a></li>
 </ul>
 <h4 id="debian-based_1">Debian-based<a class="headerlink" href="#debian-based_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>dpkg -i *.deb
@@ -2652,46 +2670,72 @@ apt install -y pmm2-client
 <ol>
 <li>
 <p>Download the PMM Client package:</p>
-<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.19.0/binary/tarball/pmm2-client-2.19.0.tar.gz
+<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.20.0/binary/tarball/pmm2-client-2.20.0.tar.gz
 </code></pre></div>
 </li>
 <li>
 <p>Download the PMM Client package checksum file:</p>
-<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.19.0/binary/tarball/pmm2-client-2.19.0.tar.gz.sha256sum
+<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.20.0/binary/tarball/pmm2-client-2.20.0.tar.gz.sha256sum
 </code></pre></div>
 </li>
 <li>
 <p>Verify the download.</p>
-<div class="highlight"><pre><span></span><code>sha256sum -c pmm2-client-2.19.0.tar.gz.sha256sum
+<div class="highlight"><pre><span></span><code>sha256sum -c pmm2-client-2.20.0.tar.gz.sha256sum
 </code></pre></div>
 </li>
 <li>
 <p>Unpack the package and move into the directory.</p>
-<div class="highlight"><pre><span></span><code>tar xfz pmm2-client-2.19.0.tar.gz <span class="o">&amp;&amp;</span> <span class="nb">cd</span> pmm2-client-2.19.0
+<div class="highlight"><pre><span></span><code>tar xfz pmm2-client-2.20.0.tar.gz <span class="o">&amp;&amp;</span> <span class="nb">cd</span> pmm2-client-2.20.0
 </code></pre></div>
+</li>
+<li>
+<p>Choose one of these two commands (depends on your permissions):</p>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Without root permissions</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PMM_DIR</span><span class="o">=</span>YOURPATH
+</code></pre></div>
+where YOURPATH replace with you real path, where you have required access.  </p>
+<p><strong>Node, MySQL and PostgreSQL exporters wont be avalaible.</strong></p>
+</div>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">With root permissions</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PMM_DIR</span><span class="o">=</span>/usr/local/percona/pmm2
+</code></pre></div>
+</div>
 </li>
 <li>
 <p>Run the installer.</p>
+<div class="admonition hint">
+<p class="admonition-title">Root permissions (if you skipped step 5 for non root users)</p>
 <div class="highlight"><pre><span></span><code>./install_tarball
 </code></pre></div>
+</div>
 </li>
 <li>
 <p>Change the path.</p>
-<div class="highlight"><pre><span></span><code><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/local/percona/pmm2/bin
+<div class="highlight"><pre><span></span><code><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$PMM_DIR</span>/bin
 </code></pre></div>
 </li>
 <li>
-<p>Set up the agent</p>
+<p>Set up the agent (pick the command for you depending on permissions)</p>
+<div class="admonition hint">
+<p class="admonition-title">Root permissions</p>
+</div>
 <div class="highlight"><pre><span></span><code>pmm-agent setup --config-file<span class="o">=</span>/usr/local/percona/pmm2/config/pmm-agent.yaml --server-address<span class="o">=</span><span class="m">192</span>.168.1.123 --server-insecure-tls --server-username<span class="o">=</span>admin --server-password<span class="o">=</span>admin
 </code></pre></div>
-</li>
-<li>
-<p>Open a new terminal and run the agent.</p>
-<div class="highlight"><pre><span></span><code><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/local/percona/pmm2/bin pmm-agent --config-file<span class="o">=</span>/usr/local/percona/pmm2/config/pmm-agent.yaml
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Non root users</p>
+</div>
+<div class="highlight"><pre><span></span><code>pmm-agent setup --config-file<span class="o">=</span><span class="si">${</span><span class="nv">PMM_DIR</span><span class="si">}</span>/config/pmm-agent.yaml --server-address<span class="o">=</span><span class="m">192</span>.168.1.123 --server-insecure-tls --server-username<span class="o">=</span>admin --server-password<span class="o">=</span>admin --paths-tempdir<span class="o">=</span><span class="nv">$PMM_DIR</span>/tmp --paths-exporters_base<span class="o">=</span><span class="nv">$PMM_DIR</span>/exporters --paths-node_exporter<span class="o">=</span><span class="nv">$PMM_DIR</span>/exporters/node_exporter --paths-mongodb_exporter<span class="o">=</span><span class="nv">$PMM_DIR</span>/exporters/mongodb_exporter --paths-postgres_exporter<span class="o">=</span><span class="nv">$PMM_DIR</span>/exporters/postgres_exporter --paths-proxysql_exporter<span class="o">=</span><span class="nv">$PMM_DIR</span>/exporters/proxysql_exporter --paths-azure_exporter<span class="o">=</span><span class="nv">$PMM_DIR</span>/exporters/azure_exporter --paths-pt-summary<span class="o">=</span><span class="nv">$PMM_DIR</span>/tools/pt-summary --paths-pt-pg-summary<span class="o">=</span><span class="nv">$PMM_DIR</span>/tools/pt-pg-summary --paths-pt-mongodb-summary<span class="o">=</span><span class="nv">$PMM_DIR</span>/tools/pt-mongodb-summary --paths-pt-mysql-summary<span class="o">=</span><span class="nv">$PMM_DIR</span>/tools/pt-mysql-summary
 </code></pre></div>
 </li>
 <li>
-<p>In the first terminal, check.</p>
+<p>Run the agent.</p>
+<div class="highlight"><pre><span></span><code>pmm-agent --config-file<span class="o">=</span><span class="si">${</span><span class="nv">PMM_DIR</span><span class="si">}</span>/config/pmm-agent.yaml
+</code></pre></div>
+</li>
+<li>
+<p>Open a new terminal and check.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin status
 </code></pre></div>
 </li>
@@ -2817,7 +2861,7 @@ apt install -y pmm2-client
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-07-16
+      Last update: 2021-08-03
     
   </small>
 </div>
@@ -2896,10 +2940,10 @@ apt install -y pmm2-client
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.53c85856.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.716f8af4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.2b46852b.min.js"></script>
       
         <script src="../../js/lightgallery.min.js"></script>
       
