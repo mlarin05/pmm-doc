@@ -2040,6 +2040,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../release-notes/2.21.0.html" class="md-nav__link">
+        PMM 2.21.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../release-notes/2.20.0.html" class="md-nav__link">
         PMM 2.20.0
       </a>
@@ -2822,6 +2834,13 @@
 <dd>MongoDB username.</dd>
 <dt><code>--password=password</code></dt>
 <dd>MongoDB password.</dd>
+<dt><code>--agent-password=password</code></dt>
+<dd>
+<p>Override the default password for accessing the <code>/metrics</code> endpoint. (Username is <code>pmm</code> and default password is the agent ID.)</p>
+<div class="admonition caution">
+<p>This password is visible in the <a href="../dashboards/dashboard-inventory.html">inventory</a>.</p>
+</div>
+</dd>
 <dt><code>--query-source=profiler</code></dt>
 <dd>Source of queries, one of: <code>profiler</code>, <code>none</code> (default: <code>profiler</code>).</dd>
 <dt><code>--environment=environment</code></dt>
@@ -2871,6 +2890,13 @@
 <dd>MySQL username.</dd>
 <dt><code>--password=password</code></dt>
 <dd>MySQL password.</dd>
+<dt><code>--agent-password=password</code></dt>
+<dd>
+<p>Override the default password for accessing the <code>/metrics</code> endpoint. (Username is <code>pmm</code> and default password is the agent ID.)</p>
+<div class="admonition caution">
+<p>This password is visible in the <a href="../dashboards/dashboard-inventory.html">inventory</a>.</p>
+</div>
+</dd>
 <dt><code>--query-source=slowlog</code></dt>
 <dd>Source of SQL queries, one of: <code>slowlog</code>, <code>perfschema</code>, <code>none</code> (default: <code>slowlog</code>). For <code>slowlog</code> query source you need change permissions for
 specific files. Root permissions are needed for this.</dd>
@@ -2954,6 +2980,13 @@ specific files. Root permissions are needed for this.</dd>
 <dd>PostgreSQL username.</dd>
 <dt><code>--password=&lt;password&gt;</code></dt>
 <dd>PostgreSQL password.</dd>
+<dt><code>--agent-password=password</code></dt>
+<dd>
+<p>Override the default password for accessing the <code>/metrics</code> endpoint. (Username is <code>pmm</code> and default password is the agent ID.)</p>
+<div class="admonition caution">
+<p>This password is visible in the <a href="../dashboards/dashboard-inventory.html">inventory</a>.</p>
+</div>
+</dd>
 <dt><code>--query-source=&lt;query source&gt;</code></dt>
 <dd>Source of SQL queries, one of: <code>pgstatements</code>, <code>pgstatmonitor</code>, <code>none</code> (default: <code>pgstatements</code>).</dd>
 <dt><code>--environment=&lt;environment&gt;</code></dt>
@@ -2970,6 +3003,12 @@ specific files. Root permissions are needed for this.</dd>
 <dd>Use TLS to connect to the database.</dd>
 <dt><code>--tls-skip-verify</code></dt>
 <dd>Skip TLS certificates validation.</dd>
+<dt><code>--tls-ca-file</code></dt>
+<dd>TLS CA certificate file.</dd>
+<dt><code>--tls-cert-file</code></dt>
+<dd>TLS certificate file.</dd>
+<dt><code>--tls-key-file</code></dt>
+<dd>TLS certificate key file.</dd>
 <dt><code>--metrics-mode=mode</code></dt>
 <dd>Metrics flow mode for agents node-exporter. Allowed values:
 - <code>auto</code>: chosen by server (default).
@@ -2993,6 +3032,13 @@ specific files. Root permissions are needed for this.</dd>
 <dd>ProxySQL username.</dd>
 <dt><code>--password=password</code></dt>
 <dd>ProxySQL password.</dd>
+<dt><code>--agent-password=password</code></dt>
+<dd>
+<p>Override the default password for accessing the <code>/metrics</code> endpoint. (Username is <code>pmm</code> and default password is the agent ID.)</p>
+<div class="admonition caution">
+<p>This password is visible in the <a href="../dashboards/dashboard-inventory.html">inventory</a>.</p>
+</div>
+</dd>
 <dt><code>--environment=environment</code></dt>
 <dd>Environment name.</dd>
 <dt><code>--cluster=cluster</code></dt>
@@ -3191,7 +3237,7 @@ Agents:
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-03
+      Last update: 2021-08-26
     
   </small>
 </div>
